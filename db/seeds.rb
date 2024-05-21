@@ -1,10 +1,43 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
+
 puts "Seeding the database..."
+puts "Creating users..."
+# Create a user
+10.times do
+  User.create!(
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.unique.password,
+    first_name: Faker::Name.unique.first_name,
+    last_name: Faker::Name.unique.last_name
+  )
+end
+puts "Created #{User.count} users."
+
+puts "Creating posts..."
+# Create a post
+20.times do
+  Post.create!(
+    title: Faker::Music.instrument,
+    body: Faker::Lorem.paragraph,
+    category: Faker::Music.instrument,
+    price: Faker::Number.decimal(l_digits: 2),
+    photo: faker.image.urlLoremFlickr({ category: 'instrument' }),
+    user: User.all.sample
+  )
+end
+puts "Created #{Post.count} posts."
+
+puts "Creating bookings..."
+# Create a booking
+20.times do
+  Booking.create!(
+    start_date: Faker::Date.forward(days: 23),
+    end_date: Faker::Date.forward(days: 30),
+    status: ["pending", "accepted", "declined"].sample,
+    user: User.all.sample,
+    post: Post.all.sample
+  )
+end
+puts "Created #{Booking.count} bookings."
+
+puts "Done seeding the database."
