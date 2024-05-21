@@ -1,0 +1,2 @@
+class Intrument < ApplicationRecord
+end
