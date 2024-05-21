@@ -21,10 +21,23 @@ puts "Creating posts..."
     body: Faker::Lorem.paragraph,
     category: Faker::Music.instrument,
     price: Faker::Number.decimal(l_digits: 2),
-    photo: Faker::LoremFlickr.image,
+    photo: faker.image.urlLoremFlickr({ category: 'instrument' }),
     user: User.all.sample
   )
 end
 puts "Created #{Post.count} posts."
+
+puts "Creating bookings..."
+# Create a booking
+20.times do
+  Booking.create!(
+    start_date: Faker::Date.forward(days: 23),
+    end_date: Faker::Date.forward(days: 30),
+    status: ["pending", "accepted", "declined"].sample,
+    user: User.all.sample,
+    post: Post.all.sample
+  )
+end
+puts "Created #{Booking.count} bookings."
 
 puts "Done seeding the database."
