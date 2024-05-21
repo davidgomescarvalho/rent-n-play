@@ -1,2 +1,0 @@
-class Intrument < ApplicationRecord
-end
