@@ -16,16 +16,16 @@ puts "Created #{User.count} users."
 puts "Creating posts..."
 # Create a post
 20.times do
-  Post.create!(
+  Instrument.create!(
     title: Faker::Music.instrument,
     body: Faker::Lorem.paragraph,
     category: Faker::Music.instrument,
     price: Faker::Number.decimal(l_digits: 2),
-    photo: faker.image.urlLoremFlickr({ category: 'instrument' }),
+    photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['instruments'], match_all: true),
     user: User.all.sample
   )
 end
-puts "Created #{Post.count} posts."
+puts "Created #{Instrument.count} posts."
 
 puts "Creating bookings..."
 # Create a booking
@@ -35,7 +35,7 @@ puts "Creating bookings..."
     end_date: Faker::Date.forward(days: 30),
     status: ["pending", "accepted", "declined"].sample,
     user: User.all.sample,
-    post: Post.all.sample
+    instrument: Instrument.all.sample
   )
 end
 puts "Created #{Booking.count} bookings."
