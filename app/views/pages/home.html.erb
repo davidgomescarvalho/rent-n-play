@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>index of all the instruments</h1>
+<% @instruments.each do |instrument| %>
+  <ul>
+  <li><%= instrument.name %></li>
+  <li><%= instrument.description %></li>
+  <li><%= instrument.price %> </li>
+  </ul>
+<% end %>
