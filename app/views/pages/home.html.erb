@@ -1,4 +1,9 @@
-<div class="container mt-5">
-  <h1 class>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-</div>
+<h1>index of all the instruments</h1>
+<% @instruments.each do |instrument| %>
+  <ul>
+  <li><%= instrument.name %></li>
+  <li><%= instrument.description %></li>
+  <li><%= instrument.price %> </li>
+  </ul>
+<% end %>
+

@@ -1,3 +1,4 @@
+
 require 'faker'
 
 # Clear existing data
@@ -61,3 +62,4 @@ end
 puts "Created #{Booking.count} bookings."
 puts "Seeded #{User.count} users, #{Instrument.count} instruments, and #{Booking.count} bookings."
 puts "Done seeding the database."
+
