@@ -1,0 +1,8 @@
+<h1>Instrument</h1>
+<h3><%= @instrument.title %></h3>
+<p><%= @instrument.body %></p>
+<p>Category: <%= @instrument.category %></p>
+<p>Location: <%= @instrument.location %></p>
+<p>Availability: <%= @instrument.availability %></p>
+<p>Price: <%= @instrument.price %></p>
+<%= link_to 'Edit', edit_instrument_path(@instrument) %>

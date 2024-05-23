@@ -1,0 +1,13 @@
+<h1>Liste des instruments</h1>
+<ul>
+  <% @instruments.each do |instrument| %>
+    <li>
+      <h3><%= instrument.title %></h3>
+      <p><%= instrument.body %></p>
+      <p>Category: <%= instrument.category %></p>
+      <p>Location: <%= instrument.location %></p>
+      <p>Availability: <%= instrument.availability %></p>
+      <p>Price: <%= instrument.price %></p>
+    </li>
+  <% end %>
+</ul>
