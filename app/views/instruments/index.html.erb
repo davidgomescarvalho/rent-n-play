@@ -8,6 +8,7 @@
       <p>Location: <%= instrument.location %></p>
       <p>Availability: <%= instrument.availability %></p>
       <p>Price: <%= instrument.price %></p>
+      <%= link_to 'Show Instrument', instrument_path(instrument) %>
     </li>
   <% end %>
 </ul>
