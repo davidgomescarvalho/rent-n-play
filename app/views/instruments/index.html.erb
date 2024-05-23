@@ -1,13 +1,24 @@
-<h1>Liste des instruments</h1>
-<ul>
-  <% @instruments.each do |instrument| %>
-    <li>
-      <h3><%= instrument.title %></h3>
-      <p><%= instrument.body %></p>
-      <p>Category: <%= instrument.category %></p>
-      <p>Location: <%= instrument.location %></p>
-      <p>Availability: <%= instrument.availability %></p>
-      <p>Price: <%= instrument.price %></p>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="text-center my-5">
+    <h1><u>Liste des instruments</u></h1>
+  </div>
+  <ul>
+    <% @instruments.each do |instrument| %>
+  <div class="card my-2 p-3 mb-3 box-shadow">
+      <ol>
+        <h3 class="card-title "><%= instrument.title %></h3>
+        <h5 class="card-body"><%= instrument.body %></h5>
+        <p><strong>Category</strong>: <%= instrument.category %></p>
+        <p><strong>Location</strong>: <%= instrument.location %></p>
+        <p><strong>Availability</strong>: <%= instrument.availability %></p>
+        <p><strong>Price</strong>: <%= instrument.price %></p>
+     </ol>
+    <div class="text-left">
+      <%= link_to 'Show Instrument', instrument_path(instrument), class:"btn btn-primary " %>
+    </div>
+    </div>
+     <% end %>
+    </ul>
+  </div>
+</div>
+
