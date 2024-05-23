@@ -1,9 +1,65 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
+require 'faker'
+
+# Clear existing data
+Booking.destroy_all
+User.destroy_all
+Instrument.destroy_all
+puts "Cleared the database."
+
+# Seed the database
+puts "Seeding the database..."
+puts "Creating users..."
+
+# Create a user
+10.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: 'password',
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+  )
+end
+puts "Created #{User.count} users."
+
+puts "Creating instruments..."
+# Create a post
+users = User.all
+categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
+
+20.times do |i|
+  Instrument.create!(
+    title: "#{Faker::Music.instrument} #{i}",
+    body: Faker::Lorem.paragraph(sentence_count: 5),
+    category: categories.sample,
+    price: Faker::Commerce.price(range: 50..1000),
+    photo: Faker::LoremFlickr.image(search_terms: ['instruments']),
+    user: users.sample,
+    location: Faker::Address.city,
+    availability: Faker::Date.forward(days: 30)
+    )
+end
+puts "Created #{Instrument.count} instruments."
+
+puts "Creating bookings..."
+# Create a booking
+instruments = Instrument.all
+statuses = ["Pending", "Confirmed", "Cancelled"]
+
+20.times do
+  start_date = Faker::Date.forward(days: 30)
+  end_date = start_date + rand(1..7).days
+
+  Booking.create!(
+    user: users.sample,
+    instrument: instruments.sample,
+    start_date: start_date,
+    end_date: end_date,
+    status: statuses.sample,
+    total_price: rand(50..1000)
+  )
+end
+puts "Created #{Booking.count} bookings."
+puts "Seeded #{User.count} users, #{Instrument.count} instruments, and #{Booking.count} bookings."
+puts "Done seeding the database."
+
