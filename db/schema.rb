@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_22_160057) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_164309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_160057) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_price", null: false
+    t.bigint "instrument_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["instrument_id"], name: "index_bookings_on_instrument_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "instruments", force: :cascade do |t|
@@ -30,6 +35,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_160057) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "location", null: false
+    t.string "availability", null: false
+    t.index ["user_id"], name: "index_instruments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_160057) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "instruments"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "instruments", "users"
 end
