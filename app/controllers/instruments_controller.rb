@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
+  before_action :set_instrument, only: %i[show edit update destroy]
   def index
     @instruments = Instrument.all
   end
@@ -35,7 +35,6 @@ class InstrumentsController < ApplicationController
     redirect_to instruments_path
   end
 
-
   private
 
   def set_instrument
@@ -45,5 +44,4 @@ class InstrumentsController < ApplicationController
   def instrument_params
     params.require(:instrument).permit(:title, :body, :price, :location, :category, :availability)
   end
-
 end
