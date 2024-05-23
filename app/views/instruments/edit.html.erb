@@ -1,10 +1,10 @@
 <%= simple_form_for @instrument do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
+  <%= f.input :title %>
+  <%= f.input :body %>
   <%= f.input :price %>
   <%= f.input :category %>
   <%= f.input :availability %>
-  <%= f.input :image %>
+  <%= f.input :location %>
 
   <%= f.button :submit %>
 <% end %>
