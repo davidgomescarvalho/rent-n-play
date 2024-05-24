@@ -1,10 +1,15 @@
-<%= simple_form_for @instrument do |f| %>
-  <%= f.input :title %>
-  <%= f.input :body %>
-  <%= f.input :price %>
-  <%= f.input :category %>
-  <%= f.input :availability %>
-  <%= f.input :location %>
-
-  <%= f.button :submit %>
-<% end %>
+<div class="container mt-5">
+  <h1>Edit Instrument</h1>
+  <div class="mt-2">
+      <%= simple_form_for @instrument do |f| %>
+        <%= f.input :title %>
+        <%= f.input :body %>
+        <%= f.input :price %>
+        <%= f.input :category %>
+        <%= f.input :availability %>
+        <%= f.input :location %>
+        <%= f.input :photo %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+</div>
