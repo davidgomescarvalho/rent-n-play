@@ -16,7 +16,7 @@ class InstrumentsController < ApplicationController
     @instrument.user = current_user
     @instrument.save!
     if @instrument.save
-      redirect_to instrument_path(@instrument)
+      redirect_to instrument_path(@instrument), notice: 'Your Instrument was successfully created.'
     else
       render :new
     end
@@ -27,12 +27,12 @@ class InstrumentsController < ApplicationController
 
   def update
     @instrument.update(instrument_params)
-    redirect_to instrument_path(@instrument)
+    redirect_to instrument_path(@instrument), notice: 'Your instrument was successfully updated.'
   end
 
   def destroy
     @instrument.destroy
-    redirect_to instruments_path
+    redirect_to instruments_path, notice: 'Your instrument was successfully destroyed.'
   end
 
   private
