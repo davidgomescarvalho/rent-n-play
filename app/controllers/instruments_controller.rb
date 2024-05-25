@@ -18,7 +18,7 @@ class InstrumentsController < ApplicationController
     if @instrument.save
       redirect_to instrument_path(@instrument), notice: 'Your Instrument was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
