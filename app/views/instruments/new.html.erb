@@ -5,7 +5,7 @@
       <%= f.input :body %>
       <%= f.input :price %>
       <%= f.input :location %>
-      <%= f.input :category%>
+      <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"]%>
       <%= f.input :availability, input_html: {data: {controller: "datepicker" }} %>
       <%= f.button :submit %>
     <% end %>
