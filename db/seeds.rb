@@ -26,6 +26,7 @@ puts "Creating instruments..."
 # Create a post
 users = User.all
 categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
+locations = ["5 Avenue Anatole France, 75007 Paris, France",  "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
 
 20.times do |i|
   Instrument.create!(
@@ -35,7 +36,7 @@ categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
     price: Faker::Commerce.price(range: 50..1000),
     photo: Faker::LoremFlickr.image(search_terms: ['instruments']),
     user: users.sample,
-    location: Faker::Address.city,
+    location: locations.sample,
     availability: Faker::Date.forward(days: 30)
     )
 end

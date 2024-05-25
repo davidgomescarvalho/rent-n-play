@@ -38,7 +38,9 @@
                     <%= image_tag "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <% end %>
                   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
                     <%= link_to "Profil", edit_user_registration_path, class: "dropdown-item" %>
+
                     <%= link_to "Another action", "#", class: "dropdown-item" %>
                     <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
                   </div>
@@ -61,20 +63,6 @@
       <% end %>
 
       <%= yield %>
-    </div>
-    <div class="container mt-20">
-      <div class="footer">
-        <div class="footer-links">
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <div class="footer-copyright">
-          This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-        </div>
-      </div>
     </div>
 
   </body>

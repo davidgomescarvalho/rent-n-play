@@ -6,6 +6,12 @@ class InstrumentsController < ApplicationController
   end
 
   def show
+    @markers =[{
+        lat: @instrument.latitude,
+        lng: @instrument.longitude,
+        info_Window: render_to_string(partial: "info_window", locals: { instrument: @instrument }),
+        marker_html: render_to_string(partial: "marker")
+      }]
   end
 
   def new
