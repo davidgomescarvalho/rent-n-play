@@ -4,8 +4,8 @@
       <%= simple_form_for @instrument do |f| %>
         <%= f.input :title %>
         <%= f.input :body %>
-        <%= f.input :price %>
-        <%= f.input :category %>
+        <%= f.input :price,  as: :numeric, input_html: { min: 0 }  %>
+        <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"] %>
         <%= f.input :availability %>
         <%= f.input :location %>
 

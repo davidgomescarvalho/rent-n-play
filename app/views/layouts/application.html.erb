@@ -25,11 +25,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
               <% if user_signed_in? %>
+              <% unless current_page?(controller: 'instruments', action: 'new') %>
+                <li class="nav-item active">
+                  <a href="/instruments/new"><i class="fa-solid fa-plus"></i></a>
+                </li>
+                <% else %>
+                  <span></span>
+                 <% end %>
+                <li class="nav-item active">
+                  <%= link_to "Instruments", instruments_path, class: "nav-link" %>
+                </li>
                 <li class="nav-item active">
                   <%= link_to "Your Bookings", my_bookings_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Messages", "#", class: "nav-link" %>
                 </li>
                 <li class="nav-item dropdown">
                   <% if current_user.picture.attached? %>
@@ -42,7 +49,7 @@
                     <%= link_to "Profil", edit_user_registration_path, class: "dropdown-item" %>
 
                     <%= link_to "Another action", "#", class: "dropdown-item" %>
-                    <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+                    <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", style: "color:red;", data: {turbo_method: :delete} %>
                   </div>
                 </li>
               <% else %>
