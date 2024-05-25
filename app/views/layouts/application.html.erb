@@ -50,6 +50,13 @@
         </div>
       </div>
     <div class="container mt-5">
+    <div class="container">
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+          <%= message %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
     <div class="container mt-20">
