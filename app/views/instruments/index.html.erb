@@ -1,6 +1,6 @@
 <div class="container">
   <div class="text-center my-5">
-    <h1><u>Liste des instruments</u></h1>
+    <h1 class="main-title">RENT n' PLAY</h1>
   </div>
   <div class="flex-inline">
     <%= link_to "Add your Instrument", new_instrument_path, class: "btn btn-primary my-1" %>
@@ -8,7 +8,7 @@
   <div class="row row-cols-3 gy-2">
     <% @instruments.each do |instrument| %>
       <div class="col">
-        <div class="card border border-warning rounded-5">
+        <div class="card border border-warning rounded-5 border-3">
           <img src="https://source.unsplash.com/300x300?instrument,<%= instrument.title %>" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%= instrument.title %></h5>
