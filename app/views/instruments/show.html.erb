@@ -20,6 +20,14 @@
             </div>
           </div>
           <hr>
+          <div class="card-header">
+          <h4>Here is the <%= @instrument.title %></h4>
+        </div>
+          <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+          <hr>
           <p><strong>Posted by:</strong> <%= @instrument.user.first_name %> <%= @instrument.user.last_name %></p>
           <%= link_to 'Edit', edit_instrument_path(@instrument), class: "btn btn-primary" %>
           <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
