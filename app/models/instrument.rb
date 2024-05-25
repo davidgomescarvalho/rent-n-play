@@ -6,7 +6,7 @@ class Instrument < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :body, presence: true, length: { minimum: 15 }
-  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :category, presence: true
   validates :location, presence: true
   validates :availability, presence: true
