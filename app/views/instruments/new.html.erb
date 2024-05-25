@@ -3,11 +3,11 @@
     <%= simple_form_for @instrument do |f| %>
       <%= f.input :title %>
       <%= f.input :body %>
-      <%= f.input :price %>
+      <%= f.input :price,  as: :numeric, input_html: { min: 0 } %>
       <%= f.input :location %>
-      <%= f.input :category%>
+      <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"]%>
       <%= f.input :availability, input_html: {data: {controller: "datepicker" }} %>
-      <%= f.button :submit %>
+      <%= f.button :submit, 'Submit', class: 'custom-submit-button' %>
     <% end %>
     raise
   </div>

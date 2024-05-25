@@ -6,6 +6,12 @@ class InstrumentsController < ApplicationController
   end
 
   def show
+    @markers =[{
+        lat: @instrument.latitude,
+        lng: @instrument.longitude,
+        info_Window: render_to_string(partial: "info_window", locals: { instrument: @instrument }),
+        marker_html: render_to_string(partial: "marker")
+      }]
   end
 
   def new
@@ -17,8 +23,10 @@ class InstrumentsController < ApplicationController
     @instrument.user = current_user
     @instrument.save!
     if @instrument.save
+      flash[:notice] = "Instrument was successfully created."
       redirect_to instrument_path(@instrument), notice: 'Your Instrument was successfully created.'
     else
+      flash[:alert] = @instrument.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
     end
   end
