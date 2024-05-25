@@ -30,6 +30,9 @@ gem "devise"
 
 gem 'faker'
 
+# Use Cloudinary for load image
+gem 'cloudinary'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
