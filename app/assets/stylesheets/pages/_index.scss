@@ -1,2 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
+.card {
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-top {
+  object-fit: cover;
+}
