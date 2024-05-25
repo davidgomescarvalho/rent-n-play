@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :instruments do
     resources :bookings
   end
+
+  resources :my_bookings, only: %i[index]
 end
