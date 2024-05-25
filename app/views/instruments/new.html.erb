@@ -7,7 +7,7 @@
       <%= f.input :location %>
       <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"]%>
       <%= f.input :availability, input_html: {data: {controller: "datepicker" }} %>
-      <%= f.button :submit %>
+      <%= f.button :submit, 'Submit', class: 'custom-submit-button' %>
     <% end %>
   </div>
   <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
