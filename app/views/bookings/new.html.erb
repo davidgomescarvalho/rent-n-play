@@ -1,0 +1,9 @@
+<h1>Book <%= @instrument.title %></h1>
+  <div class="mt-2">
+    <%= simple_form_for @booking do |f| %>
+      <%= f.input :start_date, input_html: {data: {controller: "datepicker" }} %>
+      <%= f.input :end_date, input_html: {data: {controller: "datepicker" }} %>
+      <%= f.button :submit, 'Submit', class: 'custom-submit-button' %>
+    <% end %>
+  </div>
+  <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>

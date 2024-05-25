@@ -17,7 +17,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
+    @booking.user = current_user
+    @booking.instrument = Instrument.find(params[:instrument_id])
     if @booking.save
       redirect_to @booking, notice: 'Booking was successfully created.'
     else
