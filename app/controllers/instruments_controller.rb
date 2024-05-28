@@ -2,7 +2,11 @@ class InstrumentsController < ApplicationController
   before_action :set_instrument, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index]
   def index
-    @instruments = Instrument.all
+    if params[:query].present?
+      @instruments = Instrument.global_search(params[:query])
+    else
+      @instruments = Instrument.all
+    end
   end
 
   def show
