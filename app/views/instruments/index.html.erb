@@ -28,7 +28,7 @@
     <% @instruments.each do |instrument| %>
       <div class="col">
         <div class="card border border-warning rounded-5 border-1">
-          <img src=instrument.photo class="card-img-top" alt="...">
+        <%= image_tag instrument.photo, class: "card-img-top", alt: instrument.title %>
           <div class="card-body">
             <h5 class="card-title"><%= instrument.title %></h5>
             <p><strong>Category</strong>: <%= instrument.category %></p>
