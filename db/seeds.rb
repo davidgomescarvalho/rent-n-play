@@ -1,4 +1,3 @@
-
 require 'faker'
 
 # Clear existing data
@@ -17,7 +16,8 @@ puts "Creating users..."
     email: Faker::Internet.email,
     password: 'password',
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
+    last_name: Faker::Name.last_name,
+    avatar: "https://thispersondoesnotexist.com/image"
   )
 end
 puts "Created #{User.count} users."
@@ -26,7 +26,7 @@ puts "Creating instruments..."
 # Create a post
 users = User.all
 categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
-locations = ["5 Avenue Anatole France, 75007 Paris, France",  "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
+locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
 
 20.times do |i|
   Instrument.create!(
