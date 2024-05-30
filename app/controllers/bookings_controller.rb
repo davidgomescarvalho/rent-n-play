@@ -6,10 +6,13 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def new
+
     @booking = Booking.new
+    @instrument = Instrument.find(params[:instrument_id])
   end
 
   def edit
@@ -17,10 +20,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
+    puts booking_params.inspect
     if @booking.save
       redirect_to @booking, notice: 'Booking was successfully created.'
     else
+      @instruments = Instrument.all
       render :new
     end
   end
@@ -45,6 +49,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :instrument_id)
+    params.require(:booking).permit(:start_date, :end_date, :instrument_id)
   end
 end
