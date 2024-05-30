@@ -12,13 +12,17 @@ puts "Creating users..."
 
 # Create a user
 10.times do
-  User.create!(
+  user = User.create!(
     email: Faker::Internet.email,
     password: 'password',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
   )
+  photo = URI.open(Faker::Avatar.image(size: "50x50", format: "jpg"))
+  user.photo.attach(io: photo, filename: "#{user.first_name}.jpg", content_type: 'image/jpg')
+  user.save!
 end
+
 puts "Created #{User.count} users."
 
 puts "Creating instruments..."
@@ -35,8 +39,11 @@ locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 750
     price: Faker::Commerce.price(range: 50..1000),
     user: users.sample,
     location: locations.sample,
-    availability: Faker::Date.forward(days: 30)
-    )
+    availability: Faker::Date.forward(days: 30),
+  )
+  photo = URI.open(Faker::LoremFlickr.image(size: "50x60", search_terms: ['instrument']))
+  Instrument.last.photo.attach(io: photo, filename: "#{Instrument.last.title}.jpg", content_type: 'image/jpg')
+  Instrument.last.save!
 end
 puts "Created #{Instrument.count} instruments."
 
@@ -61,3 +68,6 @@ end
 puts "Created #{Booking.count} bookings."
 puts "Seeded #{User.count} users, #{Instrument.count} instruments, and #{Booking.count} bookings."
 puts "Done seeding the database."
+
+# photo: Faker::Avatar.image(size: "50x50", format: "jpg")
+# photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['instrument'])
