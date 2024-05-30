@@ -24,9 +24,9 @@
       </div>
     </div>
   </div>
-  <div class="row row-cols-3 gy-2">
+  <div class="row row-cols-3  gy-2">
     <% @instruments.each do |instrument| %>
-      <div class="col">
+      <div class="col col-md-6 col-lg-4 col-xl-3 mb-4 col-sm-12 col-xs-12">
         <div class="card border border-warning rounded-5 border-1">
            <%= image_tag instrument.photo, class: "card-img-top", alt: instrument.title%>
           <div class="card-body">
