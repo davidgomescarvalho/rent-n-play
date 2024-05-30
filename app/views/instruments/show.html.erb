@@ -35,7 +35,7 @@
               <%= link_to 'Rent', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
           <% end %>
           <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
-          <%= link_to 'Bookings', instrument_booking_path(@instrument), class: "btn btn-primary" %>
+          <%= link_to 'Booking', instrument_booking_path(@instrument), class: "btn btn-primary" %>
           <% if @instrument.user == current_user %>
               <%= link_to 'Delete', instrument_path(@instrument), data: {"turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           <% end %>
