@@ -1,7 +1,19 @@
-<h1>My Bookings page</h1>
-<ul>
-  <% Array(@booking.instrument).each do |instrument| %>
-    <li><%= instrument.title %></li>
-  <% end %>
-</ul>
-<%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
+<h1>Booking Details</h1>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @booking.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @booking.end_date %>
+</p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @booking.instrument.title %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
