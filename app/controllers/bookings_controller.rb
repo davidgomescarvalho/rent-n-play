@@ -19,19 +19,25 @@ class BookingsController < ApplicationController
   end
 
   def create
+
     @booking = Booking.new(booking_params)
-    puts booking_params.inspect
-    if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created.'
+    @instrument = Instrument.find(params[:instrument_id])
+    @booking.instrument = @instrument
+    @booking.user = current_user
+    @booking.total_price = @instrument.price * (@booking.end_date - @booking.start_date).to_i
+    @booking.status = "Pending"
+
+    if @booking.save!
+      redirect_to instrument_booking_path(@instrument, @booking), notice: 'Booking was successfully created.'
+
     else
-      @instruments = Instrument.all
       render :new
     end
   end
 
   def update
     if @booking.update(booking_params)
-      redirect_to @booking, notice: 'Booking was successfully updated.'
+      redirect_to booking_path(@booking), notice: 'Booking was successfully updated.'
     else
       render :edit
     end
