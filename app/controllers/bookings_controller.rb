@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
     @booking.status = "Pending"
 
     if @booking.save!
-      redirect_to instrument_booking_path(@instrument, @booking), notice: 'Booking was successfully created.'
+      redirect_to booking_path(@booking), notice: 'Booking was successfully created.'
 
     else
       render :new
@@ -41,6 +41,7 @@ class BookingsController < ApplicationController
     else
       render :edit
     end
+
   end
 
   def destroy
