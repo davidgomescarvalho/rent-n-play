@@ -22,5 +22,5 @@ class Instrument < ApplicationRecord
   validates :location, presence: true
   validates :availability, presence: true
   validates :user, presence: true
-  validates :photo, presence: true
+
 end
