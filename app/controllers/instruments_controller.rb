@@ -1,6 +1,7 @@
 class InstrumentsController < ApplicationController
   before_action :set_instrument, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[index]
+  before_action :correct_user, only: %i[edit update destroy]
+
   def index
     if params[:query].present?
       @instruments = Instrument.global_search(params[:query])
@@ -55,7 +56,11 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.find(params[:id])
   end
 
+  def correct_user
+    redirect_to instruments_path, alert: 'Not authorized to delete this instrument.' unless @instrument.user == current_user
+  end
+
   def instrument_params
-    params.require(:instrument).permit(:title, :body, :price, :location, :category, :availability)
+    params.require(:instrument).permit(:title, :body, :price, :location, :category, :availability, :photo)
   end
 end
