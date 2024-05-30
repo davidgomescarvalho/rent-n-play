@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def new
@@ -45,6 +46,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :instrument_id)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
