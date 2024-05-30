@@ -16,8 +16,7 @@ puts "Creating users..."
     email: Faker::Internet.email,
     password: 'password',
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    avatar: "https://thispersondoesnotexist.com/image"
+    last_name: Faker::Name.last_name
   )
 end
 puts "Created #{User.count} users."
@@ -34,7 +33,6 @@ locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 750
     body: Faker::Lorem.paragraph(sentence_count: 5),
     category: categories.sample,
     price: Faker::Commerce.price(range: 50..1000),
-    photo: Faker::LoremFlickr.image(search_terms: ['instruments']),
     user: users.sample,
     location: locations.sample,
     availability: Faker::Date.forward(days: 30)
