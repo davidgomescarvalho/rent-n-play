@@ -39,7 +39,9 @@ locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 750
     price: Faker::Commerce.price(range: 50..1000),
     user: users.sample,
     location: locations.sample,
-    availability: Faker::Date.forward(days: 30),
+    start_date: Faker::Date.forward(days: 30),
+    end_date: Faker::Date.forward(days: 30) + rand(1..7).days,
+    availability: Faker::Boolean
   )
   photo = URI.open(Faker::LoremFlickr.image(size: "500x600", search_terms: ['instrument']))
   Instrument.last.photo.attach(io: photo, filename: "#{Instrument.last.title}.jpg", content_type: 'image/jpg')

@@ -12,11 +12,13 @@
               <p><strong>Price:</strong> <%= @instrument.price %> <i class="fa-solid fa-euro-sign"></i></p>
               <p><strong>Description:</strong></p>
               <p><%= @instrument.body %></p>
+              <p><strong>Location:</strong> <%= @instrument.location %></p>
             </div>
             <div class="col-md-6">
               <% if @instrument.photo.present? %>
                 <%= image_tag @instrument.photo, class: "img-fluid", alt: @instrument.title %>
               <% end %>
+              <p class="mt-4"><strong>Availability:</strong> From <%= @instrument.start_date %> to <%= @instrument.end_date %></p>
             </div>
           </div>
           <hr>
@@ -35,7 +37,9 @@
               <%= link_to 'Rent', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
           <% end %>
           <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
+
           <%= link_to 'New Booking', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
+
           <% if @instrument.user == current_user %>
               <%= link_to 'Delete', instrument_path(@instrument), data: {"turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           <% end %>
