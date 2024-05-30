@@ -1,1 +1,7 @@
 <h1>My Bookings page</h1>
+<ul>
+  <% Array(@booking.instrument).each do |instrument| %>
+    <li><%= instrument.title %></li>
+  <% end %>
+</ul>
+<%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
