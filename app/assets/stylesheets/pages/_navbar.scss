@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(230, 230, 230);
+  background: #F5EDCC;
+  color: black;
+  font-size: large;
+  font-weight: 500;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -23,4 +27,10 @@
 .btn-flat:hover {
   background: #e88300;
   color: white;
+}
+a.nav-link {
+  border-radius: 4px;
+  border : 2px solid #FA7561;
+  background-color:#EBDA99 ;
+  margin: 4px;
 }
