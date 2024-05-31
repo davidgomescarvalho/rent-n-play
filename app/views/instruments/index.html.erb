@@ -1,10 +1,8 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1554446422-c4d46271ab85?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
   <div class="container">
     <h1>RENT 'N PLAY</h1>
     <h2>Unleash Your Musical Journey : Rent, Play, Repeat !</h2>
-    <p>Rent instruments with Rent 'N Play</p>
-    <a class="btn btn-flat" href="#">Book now</a>
   </div>
 </div>
 
@@ -19,7 +17,7 @@
                 class: "form-control",
                 placeholder: "Type a keyword"
             %>
-          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <%= submit_tag "Search", name: "", class: "btn btn-info" %>
         <% end %>
       </div>
     </div>
@@ -64,7 +62,7 @@
             <p><strong>Price</strong>: <%= instrument.price %> <i class="fa-solid fa-euro-sign"></i></p>
             <p><strong>Owner</strong>: <%= instrument.user.first_name %> <%= instrument.user.last_name %></p>
 
-            <%= link_to 'Show Instrument', instrument_path(instrument), class:"btn btn-warning" %>
+            <%= link_to 'Show Instrument', instrument_path(instrument), class:"btn btn-info" %>
 
             <%# <%= link_to 'Edit', edit_instrument_path(instrument), class:"btn btn-info" %>
           </div>
