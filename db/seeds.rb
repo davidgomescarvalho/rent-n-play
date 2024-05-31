@@ -67,7 +67,7 @@ puts "Creating bookings..."
 instruments = Instrument.all
 statuses = ["Pending", "Confirmed", "Cancelled"]
 
-20.times do
+4.times do
   start_date = Faker::Date.forward(days: 30)
   end_date = start_date + rand(1..7).days
 
