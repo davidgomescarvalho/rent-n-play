@@ -28,7 +28,32 @@
     <% @instruments.each do |instrument| %>
       <div class="col col-md-6 col-lg-4 col-xl-3 mb-4 col-sm-12 col-xs-12">
         <div class="card border border-warning rounded-5 border-1">
-           <%= images_tag [instrument.photos], class: "card-img-top", alt: instrument.title%>
+                      <% if instrument.photos.attached? %>
+                <div id="carousel-<%= instrument.id %>" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <% instrument.photos.each_with_index do |photo, index| %>
+                      <button type="button" data-bs-target="#carousel-<%= instrument.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+                    <% end %>
+                  </div>
+                  <div class="carousel-inner">
+                    <% instrument.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= 'active' if index == 0 %>">
+                        <%= image_tag url_for(photo), class: "d-block w-100" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= instrument.id %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= instrument.id %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              <% else %>
+                <p>No photos available for this instrument.</p>
+              <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= instrument.title %></h5>
             <p><strong>Category</strong>: <%= instrument.category %></p>
