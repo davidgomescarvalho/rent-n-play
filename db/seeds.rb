@@ -33,9 +33,9 @@ categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
 locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
 availability = ["Yes", "No"]
 
-20.times do |i|
+18.times do |i|
   instrument = Instrument.create!(
-    title: "#{Faker::Music.instrument} #{i}",
+    title: "#{Faker::Music.unique.instrument}" ,
     body: Faker::Lorem.paragraph(sentence_count: 5),
     category: categories.sample,
     price: Faker::Commerce.price(range: 50..1000),
@@ -45,10 +45,14 @@ availability = ["Yes", "No"]
     end_date: Faker::Date.forward(days: 30) + rand(1..7).days,
     availability: availability.sample
   )
+
+  instrument_name = instrument.title
+  url = "https://source.unsplash.com/300x300?#{instrument_name}"
+
   photos_urls = [
-    Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument']),
-    Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument']),
-    Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument'])
+    url,
+    url,
+    url
   ]
   photos_urls.each do |url|
     photos = URI.open(url)
