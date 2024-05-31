@@ -41,8 +41,11 @@ class InstrumentsController < ApplicationController
   end
 
   def update
-    @instrument.update(instrument_params)
-    redirect_to instrument_path(@instrument), notice: 'Your instrument was successfully updated.'
+    if @instrument.update(instrument_params)
+      redirect_to instrument_path(@instrument), notice: 'Your instrument was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy

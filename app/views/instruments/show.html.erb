@@ -13,7 +13,13 @@
               <p><strong>Description:</strong></p>
               <p><%= @instrument.body %></p>
               <p><strong>Location:</strong> <%= @instrument.location %></p>
-              <p><strong>Available ?</strong> <%=@instrument.availability%></p>
+              <p><strong>Available ?</strong> <%=@instrument.availability%>
+              <% if @instrument.availability == "Yes" %>
+               <i class="fa-solid fa-check"></i>
+              <% else %>
+             <i class="fa-solid fa-times"></i>
+              <% end %>
+              </p>
             </div>
             <div class="col-md-6">
                <% if @instrument.photos.attached? %>

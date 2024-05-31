@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user_instruments/index'
   devise_for :users
   root to: "instruments#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
   end
   resources :bookings, only: %i[show edit update index destroy]
+  resources :user_instruments, only: %i[index]
 end
