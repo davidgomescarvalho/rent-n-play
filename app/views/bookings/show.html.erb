@@ -21,12 +21,12 @@
 
 <p>
   <strong>Daily Price:</strong>
-  <%= number_to_currency(@booking.instrument.price) %>
+  <%= number_to_currency(@booking.instrument.price) <i class="fa-solid fa-euro-sign"></i> %>
 </p>
 
 <p>
   <strong>Total Price:</strong>
-  <%= number_to_currency(@booking.total_price) %>
+  <%= number_to_currency(@booking.total_price) <i class="fa-solid fa-euro-sign"></i> %>
 </p>
 
 <% if @booking.instrument.photos.attached? %>
