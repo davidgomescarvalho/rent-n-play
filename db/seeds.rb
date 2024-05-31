@@ -77,7 +77,7 @@ statuses = ["Pending", "Confirmed", "Cancelled"]
     start_date: start_date,
     end_date: end_date,
     status: statuses.sample,
-    total_price: rand(50..1000)
+    total_price: rand(50..100)
   )
 end
 puts "Created #{Booking.count} bookings."
