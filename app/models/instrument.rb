@@ -1,6 +1,6 @@
 class Instrument < ApplicationRecord
   has_many :bookings, dependent: :destroy
-  has_one_attached :photo
+  has_many_attached :photos
   belongs_to :user
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
@@ -22,4 +22,6 @@ class Instrument < ApplicationRecord
   validates :location, presence: true
   validates :availability, presence: true
   validates :user, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 end

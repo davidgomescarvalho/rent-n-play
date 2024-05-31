@@ -1,8 +1,9 @@
 <h1>My Bookings!</h1>
+
   <div class="container-fluid">
     <div class="row justify-content-center">
       <% @bookings.each do |booking| %>
-        <div class="col-6 col-md-3 m-2 p-3 border border-info">
+        <div class="col-6 col-md-3 m-2 p-3 border border-info col-lg-4 col-xl-3 mb-4 col-sm-12 col-xs-12">
           <p>
             <strong>Start Date:</strong>
             <%= booking.start_date %>
@@ -20,7 +21,32 @@
             <%= booking.total_price %>
           </p>
           <div class="card" style="width: 250px; height: 250px">
-            <%= image_tag booking.instrument.photo %>
+            <% if booking.instrument.photos.attached? %>
+              <div id="carousel-<%= booking.id %>" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <% booking.instrument.photos.each_with_index do |photo, index| %>
+                    <button type="button" data-bs-target="#carousel-<%= booking.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+                  <% end %>
+                </div>
+                <div class="carousel-inner">
+                  <% booking.instrument.photos.each_with_index do |photo, index| %>
+                    <div class="carousel-item <%= 'active' if index == 0 %>">
+                      <%= image_tag url_for(photo), class: "d-block w-100" %>
+                    </div>
+                  <% end %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= booking.id %>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= booking.id %>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+          <% else %>
+            <p>No photos available for this instrument.</p>
+          <% end %>
           </div>
           </p>
           <%= link_to 'Edit', edit_booking_path(booking), class: "btn btn-primary" %>

@@ -1,4 +1,5 @@
 require 'faker'
+require 'open-uri'
 
 # Clear existing data
 Booking.destroy_all
@@ -32,20 +33,33 @@ categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
 locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
 
 20.times do |i|
-  Instrument.create!(
+  instrument = Instrument.create!(
     title: "#{Faker::Music.instrument} #{i}",
     body: Faker::Lorem.paragraph(sentence_count: 5),
     category: categories.sample,
     price: Faker::Commerce.price(range: 50..1000),
     user: users.sample,
     location: locations.sample,
-    availability: Faker::Date.forward(days: 30),
+    start_date: Faker::Date.forward(days: 30),
+    end_date: Faker::Date.forward(days: 30) + rand(1..7).days,
+    availability: Faker::Boolean
   )
-  photo = URI.open(Faker::LoremFlickr.image(size: "500x600", search_terms: ['instrument']))
-  Instrument.last.photo.attach(io: photo, filename: "#{Instrument.last.title}.jpg", content_type: 'image/jpg')
-  Instrument.last.save!
+  photos_urls = [
+    Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument']),
+    Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument']),
+    Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument'])
+  ]
+  photos_urls.each do |url|
+    photos = URI.open(url)
+    instrument.photos.attach(io: photos, filename: "#{Instrument.last.title}.jpg", content_type: 'image/jpg')
+  end
+  # URI.open(Faker::LoremFlickr.image(size: "500x600", search_terms: ['instrument']))
+  # Instrument.last.photos.attach(io: photos, filename: "#{Instrument.last.title}.jpg", content_type: 'image/jpg')
+  instrument.save!
+  puts "Seeded #{Instrument.count} instruments with #{instrument.photos.count} photos."
 end
-puts "Created #{Instrument.count} instruments."
+# puts "Created #{Instrument.count} instruments with #{Instrument.photos.count} photos."
+# puts "Created #{Instrument.count} instruments."
 
 puts "Creating bookings..."
 # Create a booking
