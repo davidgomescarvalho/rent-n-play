@@ -21,12 +21,12 @@
 
 <p>
   <strong>Daily Price:</strong>
-  <%= number_to_currency(@booking.instrument.price) <i class="fa-solid fa-euro-sign"></i> %>
+  <%= number_to_currency(@booking.instrument.price)  %> <i class="fa-solid fa-euro-sign"></i>
 </p>
 
 <p>
   <strong>Total Price:</strong>
-  <%= number_to_currency(@booking.total_price) <i class="fa-solid fa-euro-sign"></i> %>
+  <%= number_to_currency(@booking.total_price) %> <i class="fa-solid fa-euro-sign"></i>
 </p>
 
 <% if @booking.instrument.photos.attached? %>
@@ -39,7 +39,7 @@
     <div class="carousel-inner">
       <% @booking.instrument.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
-          <%= image_tag url_for(photo), class: "d-block w-100" %>
+          <%= image_tag url_for(photo), class: "d-block w-100", style:"height:100%;" %>
         </div>
       <% end %>
     </div>

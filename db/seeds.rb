@@ -11,6 +11,7 @@ puts "Cleared the database."
 puts "Seeding the database..."
 puts "Creating users..."
 
+
 # Create a user
 10.times do
   user = User.create!(
@@ -33,7 +34,7 @@ categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
 locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
 availability = ["Yes", "No"]
 
-18.times do |i|
+18.times do
   instrument = Instrument.create!(
     title: "#{Faker::Music.unique.instrument}" ,
     body: Faker::Lorem.paragraph(sentence_count: 5),
@@ -47,7 +48,7 @@ availability = ["Yes", "No"]
   )
 
   instrument_name = instrument.title
-  url = "https://source.unsplash.com/300x300?#{instrument_name}"
+  url = "https://source.unsplash.com/300x300?#{instrument_name},instrument,#{instrument.category}"
 
   photos_urls = [
     url,
