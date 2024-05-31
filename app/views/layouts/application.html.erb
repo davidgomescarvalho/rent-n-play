@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="sticky">
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon " id="sticky">
         <div class="container-fluid ">
           <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag "logo-minimal.jpg" %>
@@ -22,30 +22,24 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ">
               <% if user_signed_in? %>
-              <% if current_page?(root_path) && !current_page?(controller: 'instruments', action: 'new') %>
-                    <li class="nav-item active">
-                      <a href="<%= new_instrument_path %>">
-                        <i class="fa-solid fa-plus fa-xl" style="vertical-align:middle;"></i>
-                      </a>
-                    </li>
-                  <% else %>
+                  <% if current_page?(root_path) %>
                     <span></span>
+                    <% else %>
+                      <li class="nav-item active">
+                        <%= link_to "Home", root_path, class: "nav-link" %>
+                      </li>
                   <% end %>
-                <li class="nav-item active">
-                  <%= link_to "Home", root_path, class: "nav-link" %>
-                </li>
                 <li class="nav-item active">
                   <%= link_to "My bookings", bookings_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
-                <% if current_page?(root_path) %>
-                  <span></span>
-                  <% else %>
-                <%= link_to "Add an Instrument", new_instrument_path, class: "nav-link" %>
-                <% end %>
+                  <%= link_to "My instruments", user_instruments_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item active">
+                <%= link_to "Add an Instrument", new_instrument_path, class: "nav-link " %>
                 </li>
                 <li class="nav-item dropdown">
                   <% if current_user.photo.attached? %>
@@ -75,7 +69,7 @@
       <div class="footer">
         <div class="footer-links align-center">
 
-          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="https://github.com/davidgomescarvalho/rent-n-play"><i class="fab fa-github"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>

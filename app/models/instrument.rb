@@ -15,6 +15,7 @@ class Instrument < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  # accepts_nested_attributes_for :photos, allow_destroy: true
   validates :title, presence: true, uniqueness: true
   validates :body, presence: true, length: { minimum: 15 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -24,4 +25,5 @@ class Instrument < ApplicationRecord
   validates :user, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :photos, presence: true
 end
