@@ -5,3 +5,9 @@
   <%= f.input :end_date, input_html: {data: {controller: "datepicker" }} %>
   <%= f.button :submit %>
 <% end %>
+
+<% if @booking.start_date && @booking.end_date %>
+  <% total_price = (@booking.end_date - @booking.start_date).to_i * @instrument.price_per_day %>
+  <span>Total Price: <%= total_price %></span>
+<% end %>
+<span>Total Price: <%= @booking.total_price %></span>
