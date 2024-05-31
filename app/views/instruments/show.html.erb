@@ -12,11 +12,36 @@
               <p><strong>Price:</strong> <%= @instrument.price %> <i class="fa-solid fa-euro-sign"></i></p>
               <p><strong>Description:</strong></p>
               <p><%= @instrument.body %></p>
+              <p><strong>Location:</strong> <%= @instrument.location %></p>
             </div>
             <div class="col-md-6">
-              <% if @instrument.photo.present? %>
-                <%= image_tag @instrument.photo, class: "img-fluid", alt: @instrument.title %>
+               <% if @instrument.photos.attached? %>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <% @instrument.photos.each_with_index do |photo, index| %>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+                    <% end %>
+                  </div>
+                  <div class="carousel-inner">
+                    <% @instrument.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= 'active' if index == 0 %>">
+                        <%= image_tag photo, class: "d-block w-100" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              <% else %>
+                <p>No photos available for this instrument.</p>
               <% end %>
+              <p class="mt-4"><strong>Availability:</strong> From <%= @instrument.start_date %> to <%= @instrument.end_date %></p>
             </div>
           </div>
           <hr>
@@ -35,7 +60,9 @@
               <%= link_to 'Rent', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
           <% end %>
           <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
+
           <%= link_to 'New Booking', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
+
           <% if @instrument.user == current_user %>
               <%= link_to 'Delete', instrument_path(@instrument), data: {"turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           <% end %>

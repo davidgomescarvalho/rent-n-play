@@ -6,9 +6,9 @@
         <%= f.input :body %>
         <%= f.input :price,  as: :numeric, input_html: { min: 0 }  %>
         <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"] %>
-        <%= f.input :availability %>
+        <%= f.input :availability, input_html: {data: {controller: "datepicker" }} %>
         <%= f.input :location %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.button :submit %>
       <% end %>
     </div>
