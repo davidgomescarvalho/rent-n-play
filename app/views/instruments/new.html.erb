@@ -6,8 +6,10 @@
       <%= f.input :price,  as: :numeric, input_html: { min: 0 } %>
       <%= f.input :location %>
       <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"]%>
-      <%= f.input :availability, input_html: {data: {controller: "datepicker" }} %>
-       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
+      <%= f.input :end_date, as: :string, input_html: { id: 'end_date' } %>
+      <%= f.input :availability, collection: ["Yes", "No"] %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, 'Submit', class: 'custom-submit-button' %>
     <% end %>
   </div>

@@ -31,6 +31,7 @@ puts "Creating instruments..."
 users = User.all
 categories = ["String", "Percussion", "Wind", "Keyboard", "Electronic"]
 locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
+availability = ["Yes", "No"]
 
 20.times do |i|
   instrument = Instrument.create!(
@@ -42,7 +43,7 @@ locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 750
     location: locations.sample,
     start_date: Faker::Date.forward(days: 30),
     end_date: Faker::Date.forward(days: 30) + rand(1..7).days,
-    availability: Faker::Boolean
+    availability: availability.sample
   )
   photos_urls = [
     Faker::LoremFlickr.image(size: '500x600', search_terms: ['instrument']),

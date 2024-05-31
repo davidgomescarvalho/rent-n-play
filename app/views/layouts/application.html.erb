@@ -12,10 +12,10 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="sticky">
         <div class="container-fluid ">
           <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag "logo-rent-n-play.png" %>
+            <%= image_tag "logo-minimal.jpg" %>
           <% end %>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
               <% if current_page?(root_path) && !current_page?(controller: 'instruments', action: 'new') %>
                     <li class="nav-item active">
                       <a href="<%= new_instrument_path %>">
-                        <i class="fa-solid fa-plus fa-xl"></i>
+                        <i class="fa-solid fa-plus fa-xl" style="vertical-align:middle;"></i>
                       </a>
                     </li>
                   <% else %>
@@ -41,7 +41,11 @@
                   <%= link_to "My bookings", bookings_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item active">
+                <% if current_page?(root_path) %>
+                  <span></span>
+                  <% else %>
                 <%= link_to "Add an Instrument", new_instrument_path, class: "nav-link" %>
+                <% end %>
                 </li>
                 <li class="nav-item dropdown">
                   <% if current_user.photo.attached? %>
