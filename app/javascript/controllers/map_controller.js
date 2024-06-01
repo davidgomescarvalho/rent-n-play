@@ -16,9 +16,11 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    this.map.scrollZoom.disable();
   //  this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
   //     mapboxgl: mapboxgl }))
   console.log(this.markersValue)
+
   }
 
   #addMarkersToMap() {

@@ -41,6 +41,8 @@ class InstrumentsController < ApplicationController
   end
 
   def update
+    params[:instrument].delete(:photos) if params[:instrument][:photos] == ['']
+
     if @instrument.update(instrument_params)
       redirect_to instrument_path(@instrument), notice: 'Your instrument was successfully updated.'
     else
