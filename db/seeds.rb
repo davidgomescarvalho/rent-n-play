@@ -34,7 +34,7 @@ puts "Creating instruments..."
 users = User.all
 
 locations = ["5 Avenue Anatole France, 75007 Paris, France", "Rue de Rivoli, 75001 Paris, France", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France", "Place d'Armes, 78000 Versailles, France", "50170 Mont Saint-Michel, France", "70 Rue Saint-Jean, 69005 Lyon, France", "75004 Paris, France", "Château, 41250 Chambord, France", "Prom. des Anglais, 06000 Nice, France", "Pl. Stanislas, 54000 Nancy, France"]
-availability = ["Yes", "No"]
+availability = "Yes"
 before_title = ["Awesome", "Amazing", "Authentic", "Beautiful", "Classic", "Cool", "Elegant", "Fancy", "Fantastic", "Gorgeous", "Great", "Incredible", "Lovely", "Magnificent", "Marvelous", "Outstanding", "Perfect", "Remarkable", "Spectacular", "Stunning", "Superb", "Terrific", "Wonderful", "Wondrous"]
 status = ["Pending", "Confirmed", "Cancelled"]
 
@@ -54,7 +54,7 @@ guitar = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 
@@ -62,13 +62,6 @@ guitar.photos.attach(io: URI.open("https://images.unsplash.com/photo-15888851082
 guitar.photos.attach(io: URI.open("https://images.unsplash.com/photo-1588885108193-db83d427eb4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2lic29uJTIwbGVzJTIwcGF1bHxlbnwwfHwwfHx8MA%3D%3D"), filename: "#{guitar.title}.jpg", content_type: 'image/jpg')
 guitar.photos.attach(io: URI.open("https://images.unsplash.com/photo-1616066959540-0dfbb4d7e00b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z2lic29uJTIwbGVzJTIwcGF1bHxlbnwwfHwwfHx8MA%3D%3D"), filename: "#{guitar.title}.jpg", content_type: 'image/jpg')
 
-Booking.create!(
-  user: users.sample,
-  instrument: guitar,
-  start_date: start_date,
-  end_date: start_date + rand(1..7).days,
-  status: status.sample
-)
 
 eguitar = Instrument.create!(
   title: before_title.sample + " " +"Fender Stratocaster",
@@ -79,7 +72,7 @@ eguitar = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 eguitar.photos.attach(io: URI.open("https://images.unsplash.com/photo-1613032970340-7846189c1cbe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmVuZGVyJTIwc3RyYXRvY2FzdGVyfGVufDB8fDB8fHww"), filename: "#{guitar.title}.jpg", content_type: 'image/jpg')
@@ -103,7 +96,7 @@ eguitar3 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
   )
 
   eguitar3.photos.attach(io: URI.open("https://musiquedepot.ca/media/catalog/product/cache/149f0aa481ad7771b80b95504d65e04f/3/1/31519_ibanez_rg470ahmbmt_ibanez-rg470ahmbmt-acclaim-di4.jpg"), filename: "#{guitar.title}.jpg", content_type: 'image/jpg')
@@ -131,20 +124,11 @@ aguitar1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
   aguitar1.photos.attach(io: URI.open("https://m.media-amazon.com/images/I/61zIszX+2YL.jpg"), filename: "#{aguitar1.title}.jpg", content_type: 'image/jpg')
   aguitar1.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/3/37/Andrey_Ostapenko%2C_guitarist.jpg"), filename: "#{aguitar1.title}.jpg", content_type: 'image/jpg')
   aguitar1.photos.attach(io: URI.open("https://www.normans.co.uk/cdn/shop/articles/acoustic-vs-classical_7aa53ad4-bd8b-4b5e-94be-7cb6fde78a4b.jpg?v=1620932701"), filename: "#{aguitar1.title}.jpg", content_type: 'image/jpg')
-
-  Booking.create!(
-    user: users.sample,
-    instrument: aguitar1,
-    start_date: start_date,
-    end_date: start_date + rand(1..7).days,
-    status: status.sample,
-  )
-
 
   aguitar2 = Instrument.create!(
     title: before_title.sample + " " +"Resonator Guitar",
@@ -155,7 +139,7 @@ aguitar1 = Instrument.create!(
     location: locations.sample,
     start_date: start_date,
     end_date: start_date + rand(1..7).days,
-    availability: availability.sample
+    availability: "Yes"
   )
   aguitar2.photos.attach(io: URI.open("https://plus.unsplash.com/premium_photo-1680527465661-0efe3379840f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb25hdG9yJTIwZ3VpdGFyfGVufDB8fDB8fHww"), filename: "#{aguitar2.title}.jpg", content_type: 'image/jpg')
   aguitar2.photos.attach(io: URI.open("https://images.unsplash.com/photo-1520167112707-56e25f2d7d6e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb25hdG9yJTIwZ3VpdGFyfGVufDB8fDB8fHww"), filename: "#{aguitar2.title}.jpg", content_type: 'image/jpg')
@@ -169,7 +153,6 @@ aguitar1 = Instrument.create!(
     status: status.sample,
   )
 
-
 #Drums
 
 drums1 = Instrument.create!(
@@ -181,7 +164,7 @@ drums1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
     drums1.photos.attach(io: URI.open("https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZHJ1bXxlbnwwfHwwfHx8MA%3D%3D"), filename: "#{drums1.title}.jpg", content_type: 'image/jpg')
     drums1.photos.attach(io: URI.open("https://images.unsplash.com/photo-1543443258-92b04ad5ec6b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZHJ1bXxlbnwwfHwwfHx8MA%3D%3D"), filename: "#{drums1.title}.jpg", content_type: 'image/jpg')
@@ -204,19 +187,12 @@ drums2 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
   drums2.photos.attach(io: URI.open("https://plus.unsplash.com/premium_photo-1663956132370-e6208392d8b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGplbWJlJTIwZHJ1bXN8ZW58MHx8MHx8fDA%3D"), filename: "#{drums2.title}.jpg", content_type: 'image/jpg')
   drums2.photos.attach(io: URI.open("https://images.unsplash.com/photo-1601977399206-84a2ebc75591?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGRqZW1iZSUyMGRydW1zfGVufDB8fDB8fHww"), filename: "#{drums2.title}.jpg", content_type: 'image/jpg')
   drums2.photos.attach(io: URI.open("https://images.unsplash.com/photo-1568219656418-15c329312bf1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGRqZW1iZSUyMGRydW1zfGVufDB8fDB8fHww"), filename: "#{drums2.title}.jpg", content_type: 'image/jpg')
 
-  Booking.create!(
-    user: users.sample,
-    instrument: drums2,
-    start_date: start_date,
-    end_date: start_date + rand(1..7).days,
-    status: status.sample,
-    )
 
   drums3= Instrument.create!(
     title: before_title.sample + " " +"Cajon Drum",
@@ -227,7 +203,7 @@ drums2 = Instrument.create!(
     location: locations.sample,
     start_date: start_date,
     end_date: start_date + rand(1..7).days,
-    availability: availability.sample
+    availability: "Yes"
   )
 
   drums3.photos.attach(io: URI.open("https://static.wixstatic.com/media/ac2700_2f434a85684a40bfabbcf8fb954a28ee~mv2.jpg/v1/fill/w_1600,h_1068,al_c/ac2700_2f434a85684a40bfabbcf8fb954a28ee~mv2.jpg"), filename: "#{drums3.title}.jpg", content_type: 'image/jpg')
@@ -253,20 +229,14 @@ piano1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 piano1.photos.attach(io: URI.open("https://plus.unsplash.com/premium_photo-1677503296916-478a17317cc2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhbmQlMjBwaWFub3xlbnwwfHwwfHx8MA%3D%3D"), filename: "#{piano1.title}.jpg", content_type: 'image/jpg')
 piano1.photos.attach(io: URI.open("https://images.unsplash.com/photo-1612016410921-264f6afed556?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JhbmQlMjBwaWFub3xlbnwwfHwwfHx8MA%3D%3D"), filename: "#{piano1.title}.jpg", content_type: 'image/jpg')
 piano1.photos.attach(io: URI.open("https://images.unsplash.com/photo-1624088798012-7eabdb19cf90?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JhbmQlMjBwaWFub3xlbnwwfHwwfHx8MA%3D%3D"), filename: "#{piano1.title}.jpg", content_type: 'image/jpg')
 
-Booking.create!(
-  user: users.sample,
-  instrument: piano1,
-  start_date: start_date,
-  end_date: start_date + rand(1..7).days,
-  status: status.sample,
-)
+
 
 piano2 = Instrument.create!(
   title: before_title.sample + " " +"Upright Piano",
@@ -277,7 +247,7 @@ piano2 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 piano2.photos.attach(io: URI.open("https://plus.unsplash.com/premium_photo-1664106242861-a043688ad3a0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXByaWdodCUyMHBpYW5vfGVufDB8fDB8fHww"), filename: "#{piano2.title}.jpg", content_type: 'image/jpg')
@@ -301,20 +271,14 @@ piano3 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 piano3.photos.attach(io: URI.open("https://plus.unsplash.com/premium_photo-1681389284018-a138f7fd7de9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGlnaXRhbCUyMHBpYW5vfGVufDB8fDB8fHww"), filename: "#{piano3.title}.jpg", content_type: 'image/jpg')
 piano3.photos.attach(io: URI.open("https://images.unsplash.com/photo-1560665301-91a70ba3a9ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlnaXRhbCUyMHBpYW5vfGVufDB8fDB8fHww"), filename: "#{piano3.title}.jpg", content_type: 'image/jpg')
 piano3.photos.attach(io: URI.open("https://images.unsplash.com/photo-1622707273464-9f108f2623b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGlnaXRhbCUyMHBpYW5vfGVufDB8fDB8fHww"), filename: "#{piano3.title}.jpg", content_type: 'image/jpg')
 
-Booking.create!(
-  user: users.sample,
-  instrument: piano3,
-  start_date: start_date,
-  end_date: start_date + rand(1..7).days,
-  status: status.sample,
-)
+
 
 #Violin
 
@@ -327,7 +291,7 @@ violin1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 violin1.photos.attach(io: URI.open("https://www.superprof.com.au/blog/wp-content/uploads/2018/02/how-to-play-electric-violins.jpg"), filename: "#{violin1.title}.jpg", content_type: 'image/jpg')
@@ -351,20 +315,13 @@ violin2 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 violin2.photos.attach(io: URI.open("https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/06/08/14/Violin.jpg?width=1200"), filename: "#{violin2.title}.jpg", content_type: 'image/jpg')
 violin2.photos.attach(io: URI.open("https://media.npr.org/assets/img/2014/05/16/undefined-d5b7e5943dd2d811fd1bebc0c1ca17579a84ebe2.jpg"), filename: "#{violin2.title}.jpg", content_type: 'image/jpg')
 violin2.photos.attach(io: URI.open("https://framemark.vam.ac.uk/collections/2010EK2538/full/735,/0/default.jpg"), filename: "#{violin2.title}.jpg", content_type: 'image/jpg')
 
-Booking.create!(
-  user: users.sample,
-  instrument: violin2,
-  start_date: start_date,
-  end_date: start_date + rand(1..7).days,
-  status: status.sample,
-)
 
 violin3 = Instrument.create!(
   title: before_title.sample + " " +"Classical Violin",
@@ -375,7 +332,7 @@ violin3 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 violin3.photos.attach(io: URI.open("https://npr.brightspotcdn.com/dims4/default/affed37/2147483647/strip/true/crop/1200x800+0+0/resize/880x587!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F3b%2Fa6%2Ffa9514244fe78b441079a4903eba%2Frbpviolin.jpeg"), filename: "#{violin3.title}.jpg", content_type: 'image/jpg')
@@ -401,7 +358,7 @@ saxophone1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 saxophone1.photos.attach(io: URI.open("https://drop.philharmoniedeparis.fr/Reperes/Jazz/Instruments/Sax-alto/Kenny-Garrett-%C2%A9-Maxime-Guthfreund.jpg"), filename: "#{saxophone1.title}.jpg", content_type: 'image/jpg')
@@ -425,20 +382,12 @@ saxophone2 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 saxophone2.photos.attach(io: URI.open("https://d1aeri3ty3izns.cloudfront.net/media/51/515582/600/preview.jpg"), filename: "#{saxophone2.title}.jpg", content_type: 'image/jpg')
 saxophone2.photos.attach(io: URI.open("https://m.media-amazon.com/images/I/61mKJVzciqL._AC_UF1000,1000_QL80_.jpg"), filename: "#{saxophone2.title}.jpg", content_type: 'image/jpg')
 saxophone2.photos.attach(io: URI.open("https://www.atelier-des-vents.com/3855-large_default/saxophone-soprano-selmer-serie-iii.jpg"), filename: "#{saxophone2.title}.jpg", content_type: 'image/jpg')
-
-Booking.create!(
-  user: users.sample,
-  instrument: saxophone2,
-  start_date: start_date,
-  end_date: start_date + rand(1..7).days,
-  status: status.sample,
-)
 
 #Trumpet
 
@@ -451,7 +400,7 @@ trumpet1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 trumpet1.photos.attach(io: URI.open("https://i.ebayimg.com/images/g/nskAAOSwt3Jh~1ZA/s-l1600.jpg"), filename: "#{trumpet1.title}.jpg", content_type: 'image/jpg')
@@ -476,20 +425,12 @@ trumpet2 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 trumpet2.photos.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/commons/3/32/Yamaha_Cornet_YCR-6330II_crop.png"), filename: "#{trumpet2.title}.jpg", content_type: 'image/jpg')
 trumpet2.photos.attach(io: URI.open("https://rvb-img.reverb.com/image/upload/s--u8c1RYRx--/a_0/f_auto,t_large/v1694232599/i3afsx4ditzpqoaf1ijw.jpg"), filename: "#{trumpet2.title}.jpg", content_type: 'image/jpg')
 trumpet2.photos.attach(io: URI.open("https://pvwb.net/images/produitsarticles/adams-cn1cornet-1586339255.jpg"), filename: "#{trumpet2.title}.jpg", content_type: 'image/jpg')
-
-Booking.create!(
-  user: users.sample,
-  instrument: trumpet2,
-  start_date: start_date,
-  end_date: start_date + rand(1..7).days,
-  status: status.sample,
-)
 
   #Banjo
 
@@ -502,7 +443,7 @@ banjo1 = Instrument.create!(
   location: locations.sample,
   start_date: start_date,
   end_date: start_date + rand(1..7).days,
-  availability: availability.sample
+  availability: "Yes"
 )
 
 banjo1.photos.attach(io: URI.open("https://i.ebayimg.com/images/g/gqcAAOSwB-1Y1A9U/s-l1200.webp"), filename: "#{banjo1.title}.jpg", content_type: 'image/jpg')

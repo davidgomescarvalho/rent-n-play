@@ -1,8 +1,8 @@
 <h1>Book <%= @instrument.title %></h1>
 
-<%= simple_form_for [@instrument, @booking] do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
-  <%= f.input :end_date, as: :string, input_html: { id: 'end_date' } %>
+<%= simple_form_for [@instrument, @booking], html: { data: { controller: :datepicker, datepicker_min_date_value: @instrument.start_date, datepicker_max_date_value: @instrument.end_date } } do |f| %>
+  <%= f.input :start_date, as: :string, input_html: { data: { datepicker_target: "startDate" } } %>
+  <%= f.input :end_date, as: :string, input_html: { data: { datepicker_target: "endDate" } } %>
   <%= f.button :submit, class:"bouton" %>
 <% end %>
 
