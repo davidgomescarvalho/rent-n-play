@@ -1,13 +1,13 @@
 <h1>Add your Instrument</h1>
   <div class="mt-2">
-    <%= simple_form_for @instrument do |f| %>
+    <%= simple_form_for @instrument, html: { data: { controller: :datepicker } } do |f| %>
       <%= f.input :title %>
       <%= f.input :body %>
       <%= f.input :price,  as: :numeric, input_html: { min: 0 } %>
       <%= f.input :location %>
       <%= f.input :category, collection: ["String", "Percussion", "Wind", "Keyboard", "Electronic"]%>
-      <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
-      <%= f.input :end_date, as: :string, input_html: { id: 'end_date' } %>
+      <%= f.input :start_date, as: :string, input_html: { data: { datepicker_target: "startDate" } , id: 'start_date' } %>
+      <%= f.input :end_date, as: :string, input_html: { data: { datepicker_target: "endDate" }, id: 'end_date' } %>
       <%= f.input :availability, collection: ["Yes", "No"] %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.button :submit, 'Submit', class: 'custom-submit-button' %>
