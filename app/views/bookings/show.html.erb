@@ -9,7 +9,7 @@
         <p><strong>Total Days:</strong> <%= @booking.total_days %></p>
         <p><strong>Daily Price:</strong> <%= number_to_currency(@booking.instrument.price) %></p>
         <p><strong>Total Price:</strong> <%= number_to_currency(@booking.total_price) %></p>
-        <%= link_to 'Edit Booking', edit_booking_path(@booking), class: 'btn btn-primary' %>
+        <%= link_to 'Edit Booking', edit_booking_path(@booking), class: 'bouton' %>
         <%= link_to 'Back', request.referrer || bookings_path, class: 'btn btn-secondary' %>
       </div>
     </div>
