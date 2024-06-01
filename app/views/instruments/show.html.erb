@@ -1,27 +1,45 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="card">
-        <div class="card-header">
-          <h1><%= @instrument.title %></h1>
-        </div>
-        <div class="card-body" id="show-card">
-          <div class="row">
-            <div class="col-md-6">
-              <p><strong>Category:</strong> <%= @instrument.category %></p>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title"><%= @instrument.title %></h1>
+        <p><strong>Posted by:</strong> <%= @instrument.user.first_name %> <%= @instrument.user.last_name %></p>
+          <p><strong>Category:</strong> <%= @instrument.category %></p>
               <p><strong>Price per day:</strong> <%= @instrument.price %> <i class="fa-solid fa-euro-sign"></i></p>
               <p><strong>Description:</strong></p>
               <p><%= @instrument.body %></p>
               <p><strong>Location:</strong> <%= @instrument.location %></p>
               <p><strong>Available ?</strong> <%=@instrument.availability%>
               <% if @instrument.availability == "Yes" %>
-               <i class="fa-solid fa-check"></i>
+                <i class="fa-solid fa-check"></i>
+                <p class="mt-4"><strong>Available:</strong> From <%= @instrument.start_date %> to <%= @instrument.end_date %></p>
               <% else %>
-             <i class="fa-solid fa-times"></i>
+                <i class="fa-solid fa-times"></i>
               <% end %>
-              </p>
-            </div>
-            <div class="col-md-6">
+          </p>
+          <div style="width: 100%; height: 400px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+          <div class="mt-5">
+            <% if @instrument.user == current_user %>
+            <%= link_to 'Edit', edit_instrument_path(@instrument), class: "btn btn-primary" %>
+            <% elsif @instrument.availability == "Yes" %>
+            <%= link_to 'Rent', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
+            <% end %>
+            <% if @instrument.user == current_user %>
+            <%= link_to 'Delete', instrument_path(@instrument), data: {"turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <% end %>
+            <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div>
                <% if @instrument.photos.attached? %>
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-indicators">
@@ -48,30 +66,7 @@
               <% else %>
                 <p>No photos available for this instrument.</p>
               <% end %>
-              <p class="mt-4"><strong>Available:</strong> From <%= @instrument.start_date %> to <%= @instrument.end_date %></p>
-            </div>
           </div>
-          <hr>
-          <div class="card-header">
-          <h4>Here is the <%= @instrument.title %></h4>
-        </div>
-          <div style="width: 100%; height: 600px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-          <hr>
-          <p><strong>Posted by:</strong> <%= @instrument.user.first_name %> <%= @instrument.user.last_name %></p>
-          <% if @instrument.user == current_user %>
-              <%= link_to 'Edit', edit_instrument_path(@instrument), class: "btn btn-primary" %>
-            <% elsif @instrument.availability == "Yes" %>
-              <%= link_to 'Rent', new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
-          <% end %>
-          <%= link_to 'Back', instruments_path, class: "btn btn-secondary" %>
-
-          <% if @instrument.user == current_user %>
-              <%= link_to 'Delete', instrument_path(@instrument), data: {"turbo-method": :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
