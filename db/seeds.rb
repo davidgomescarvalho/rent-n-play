@@ -455,7 +455,7 @@ trumpet1 = Instrument.create!(
 )
 
 trumpet1.photos.attach(io: URI.open("https://i.ebayimg.com/images/g/nskAAOSwt3Jh~1ZA/s-l1600.jpg"), filename: "#{trumpet1.title}.jpg", content_type: 'image/jpg')
-trumpet1.photos.attach(io: URI.open("https://sc1.musik-produktiv.com/pic-010097354xl/bach-tr450.jpg"), filename: "#{trumpet1.title}.jpg", content_type: 'image/jpg')
+trumpet1.photos.attach(io: URI.open("https://kesslerandsons.com/wp-content/uploads/new-bach-strad-180s37-trumpet.jpg"), filename: "#{trumpet1.title}.jpg", content_type: 'image/jpg')
 trumpet1.photos.attach(io: URI.open("https://rvb-img.reverb.com/image/upload/s--57EmEkDS--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_1600,q_80,w_1600/v1488819808/fbccc5uaq3dibr7orhow.jpg"), filename: "#{trumpet1.title}.jpg", content_type: 'image/jpg')
 
 Booking.create!(
