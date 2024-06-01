@@ -16,7 +16,6 @@
   border: solid black
 }
 
-
 .btn-flat {
   color: white;
   padding: 8px 24px;
@@ -26,12 +25,19 @@
 }
 
 .btn-flat:hover {
-  background: #e88300;
+  background: #fbb862;
   color: white;
 }
 a.nav-link {
-  border-radius: 4px;
-  border : 2px solid #D7B633;
+  border-radius: 6px;
+  border : 1px solid #D7B633;
+  background-color:#FFC65A ;
+  margin: 4px;
+}
+
+a.nav-link:hover {
+  border-radius: 6px;
+  border : 1px solid #fce278;
   background-color:#EBDA99 ;
   margin: 4px;
 }
