@@ -68,3 +68,14 @@
   text-decoration: none;
   width: 200px;
 }
+
+.division {
+  display: flex;
+  justify-content: space-between;
+}
+
+#instrument-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
