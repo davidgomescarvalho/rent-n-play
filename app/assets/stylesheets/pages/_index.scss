@@ -3,6 +3,8 @@
 .card {
   overflow: hidden;
   position: relative;
+}
+#index-card {
   height: 700px;
 }
 
@@ -24,4 +26,10 @@
   font-size: 20px;
   font-weight: bold;
   color: #FA7561;
+}
+
+#my-photo {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
 }
