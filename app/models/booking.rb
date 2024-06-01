@@ -32,6 +32,12 @@ class Booking < ApplicationRecord
 
   private
 
+  def dates_are_available
+    unless instrument.available?(start_date, end_date)
+      errors.add(:base, "Instrument is not available for the selected dates")
+    end
+  end
+
   def set_instrument_availability_no
     instrument.update(availability: "No")
   end

@@ -5,10 +5,10 @@
         <% @bookings.each do |booking| %>
           <div class="col col-md-6 col-lg-4 col-xl-3 mb-4 col-sm-12 col-xs-12">
             <div class="card border border-warning rounded-5 border-1 p-3">
-            <p><strong>Start Date:</strong><%= booking.start_date %></p>
-            <p><strong>End Date:</strong><%= booking.end_date %></p>
-            <p><strong>Instrument:</strong><%= booking.instrument.title %></p>
-            <p><strong>Total Price:</strong><%= booking.total_price  %> <i class="fa-solid fa-euro-sign"></i></p>
+            <p><strong>Start Date:</strong> <%= booking.start_date %></p>
+            <p><strong>End Date:</strong> <%= booking.end_date %></p>
+            <p><strong>Instrument: </strong> <%= booking.instrument.title %></p>
+            <p><strong>Total Price: </strong> <%= booking.total_price  %> <i class="fa-solid fa-euro-sign"></i></p>
 
             <div class="card" style="width: 250px; height: 250px;">
               <% if booking.instrument.photos.attached? %>
