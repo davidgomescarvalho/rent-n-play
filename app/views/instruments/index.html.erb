@@ -57,6 +57,13 @@
             <p><strong>Availability</strong>: From <%= instrument.start_date %> to <%= instrument.end_date %></p>
             <p><strong>Price</strong>: <%= instrument.price %> <i class="fa-solid fa-euro-sign"></i></p>
             <p><strong>Owner</strong>: <%= instrument.user.first_name %> <%= instrument.user.last_name %></p>
+                <p><strong>Available ?</strong> <%=instrument.availability%>
+              <% if instrument.availability == "Yes" %>
+               <i class="fa-solid fa-check"></i>
+              <% else %>
+             <i class="fa-solid fa-times"></i>
+              <% end %>
+              </p>
 
             <%= link_to 'Show Instrument', instrument_path(instrument), class:"btn custom-submit-button btn-border-lg" %>
 

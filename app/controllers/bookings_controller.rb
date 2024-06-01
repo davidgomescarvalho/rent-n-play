@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bookings = Booking.all
+    @bookings = current_user.bookings
   end
 
   def show
@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
   end
 
   def new
-
     @booking = Booking.new
     @instrument = Instrument.find(params[:instrument_id])
   end
@@ -19,7 +18,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = Booking.new(booking_params)
     @instrument = Instrument.find(params[:instrument_id])
     @booking.instrument = @instrument
