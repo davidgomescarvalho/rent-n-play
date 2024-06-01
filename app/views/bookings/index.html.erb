@@ -10,7 +10,7 @@
             <p><strong>Instrument: </strong> <%= booking.instrument.title %></p>
             <p><strong>Total Price: </strong> <%= booking.total_price  %> <i class="fa-solid fa-euro-sign"></i></p>
 
-            <div class="card" style="width: 250px; height: 250px;">
+            <div style="width: 250px; height: 250px;">
               <% if booking.instrument.photos.attached? %>
                 <div id="carousel-<%= booking.id %>" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-indicators">
@@ -21,7 +21,7 @@
                   <div class="carousel-inner">
                     <% booking.instrument.photos.each_with_index do |photo, index| %>
                       <div class="carousel-item <%= 'active' if index == 0 %>">
-                        <%= image_tag url_for(photo), class: "d-block w-100 align-center" %>
+                        <%= image_tag url_for(photo), class: "d-block w-100 align-center", id:"image-book-index" %>
                       </div>
                     <% end %>
                   </div>
@@ -37,13 +37,16 @@
               <% else %>
                 <p>No photos available for this instrument.</p>
               <% end %>
-            </p>
-            <%= link_to 'Edit', edit_booking_path(booking), class: "btn btn-primary" %>
-            <%= link_to 'Show', booking_path(booking), class: "btn btn-primary" %>
             </div>
+              <div class="bouton">
+                <%= link_to "See Booking", booking_path(booking), class: "bouton"%>
+              </div>
+            </div>
+            </div>
+        <% end %>
           </div>
       </div>
-    <% end %>
+    </div>
     </div>
   </div>
 </div>

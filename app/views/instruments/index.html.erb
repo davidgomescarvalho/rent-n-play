@@ -21,7 +21,6 @@
 <div class="container mt-5">
   <div class="row row-cols-3 gy-2">
     <% @instruments.each do |instrument| %>
-
       <div class="col col-md-6 col-lg-4 col-xl-3 mb-4 col-sm-12 col-xs-12">
         <div class="card border border-warning rounded-5 border-1" id="index-card">
                       <% if instrument.photos.attached? %>
@@ -34,7 +33,7 @@
                   <div class="carousel-inner">
                     <% instrument.photos.each_with_index do |photo, index| %>
                       <div class="carousel-item <%= 'active' if index == 0 %>">
-                        <%= image_tag url_for(photo), class: "d-block w-100" %>
+                        <%= image_tag url_for(photo), class: "d-block w-100", id: "image-index" %>
                       </div>
                     <% end %>
                   </div>
