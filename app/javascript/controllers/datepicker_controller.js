@@ -5,6 +5,8 @@ document.addEventListener('turbo:load', () => {
   flatpickr("#start_date", {
     onChange: function(selectedDates, dateStr, instance) {
       document.getElementById('end_date').flatpickr.set('minDate', dateStr);
+      minDate: "today"
+      defaultDate: this.element.value
     }
   });
 

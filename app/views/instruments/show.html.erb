@@ -21,6 +21,7 @@
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>">
+             map.scrollZoom.disable();
           </div>
           <div class="mt-5">
             <% if @instrument.user == current_user %>
