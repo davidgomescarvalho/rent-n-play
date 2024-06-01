@@ -25,4 +25,8 @@ class Instrument < ApplicationRecord
   validates :user, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+
+  def available?(start_date, end_date)
+    bookings.where("start_date < ? AND end_date > ?", end_date, start_date).none?
+  end
 end
