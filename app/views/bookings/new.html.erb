@@ -3,11 +3,10 @@
 <%= simple_form_for [@instrument, @booking] do |f| %>
   <%= f.input :start_date, as: :string, input_html: { id: 'start_date' } %>
   <%= f.input :end_date, as: :string, input_html: { id: 'end_date' } %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class:"bouton" %>
 <% end %>
 
 <% if @booking.start_date && @booking.end_date %>
   <% total_price = (@booking.end_date - @booking.start_date).to_i * @instrument.price_per_day %>
   <span>Total Price: <%= total_price %></span>
 <% end %>
-

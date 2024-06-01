@@ -24,7 +24,6 @@ class BookingsController < ApplicationController
     @instrument = Instrument.find(params[:instrument_id])
     @booking.instrument = @instrument
     @booking.user = current_user
-    @booking.total_price = @instrument.price * (@booking.end_date - @booking.start_date).to_i
     @booking.status = "Pending"
 
     if @booking.save!
