@@ -4,8 +4,9 @@
   overflow: hidden;
   position: relative;
 }
+
 #index-card {
-  height: 700px;
+  height: 600px;
 }
 
 .card-img-top {
@@ -41,5 +42,11 @@
 #my-photo {
   width: 200px;
   height: 300px;
+  object-fit: cover;
+}
+
+#image-index {
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
