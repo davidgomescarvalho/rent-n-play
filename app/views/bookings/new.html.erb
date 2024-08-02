@@ -8,5 +8,5 @@
 
 <% if @booking.start_date && @booking.end_date %>
   <% total_price = (@booking.end_date - @booking.start_date).to_i * @instrument.price_per_day %>
-  <span>Total Price: <%= total_price %></span>
+  <span>Total Price:<%= total_price %></span>
 <% end %>
